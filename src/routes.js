@@ -23,6 +23,7 @@ import Maps from "views/Maps.js";
 import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
 import AssignAudit from "views/AssignAudit";
+import Login from "views/Login";
 
 const dashboardRoutes = [
   {
@@ -38,6 +39,13 @@ const dashboardRoutes = [
     name: "Dashboard",
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
+    layout: "/admin"
+  },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "nc-icon nc-chart-pie-35",
+    component: Login,
     layout: "/admin"
   },
   {
