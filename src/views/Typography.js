@@ -15,7 +15,7 @@ import {
 function Typography() {
   return (
     <>
-      <Container fluid>
+      {/* <Container fluid>
         <Row>
           <Col md="12">
             <Card>
@@ -139,7 +139,7 @@ function Typography() {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 }

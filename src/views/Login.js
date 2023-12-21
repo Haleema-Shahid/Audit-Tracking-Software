@@ -18,6 +18,8 @@ function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    localStorage.setItem("notifications", 4);
+    window.location.href="/admin/dashboard"
   }
 
   return (

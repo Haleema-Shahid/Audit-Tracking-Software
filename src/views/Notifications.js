@@ -59,10 +59,10 @@ function Notifications() {
   };
   return (
     <>
-      <div className="rna-container">
+      {/* <div className="rna-container">
         <NotificationAlert ref={notificationAlertRef} />
-      </div>
-      <Container fluid>
+      </div> */}
+      {/* <Container fluid>
         <Card>
           <Card.Header>
             <Card.Title as="h4">Notifications</Card.Title>
@@ -279,7 +279,7 @@ function Notifications() {
             </Row>
           </Card.Body>
         </Card>
-        {/* Mini Modal */}
+        
         <Modal
           className="modal-mini modal-primary"
           show={showModal}
@@ -312,8 +312,8 @@ function Notifications() {
             </Button>
           </div>
         </Modal>
-        {/* End Modal */}
-      </Container>
+       
+      </Container> */}
     </>
   );
 }

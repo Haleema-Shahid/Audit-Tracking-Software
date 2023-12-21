@@ -22,7 +22,8 @@ import routes from "routes.js";
 
 function Header() {
   //const navigate = useNavigate();
-  const [notifications, setNotifications]=useState(4);
+  let notifs = localStorage.getItem("notifications");
+  const [notifications, setNotifications]=useState(notifs);
   const location = useLocation();
   const mobileSidebarToggle = (e) => {
     e.preventDefault();
@@ -99,7 +100,9 @@ function Header() {
                   onClick={(e) => {
                     e.preventDefault();
                     window.location.href = "/admin/AssignedAuditsList"
-                    setNotifications(notifications-1);
+                    notifs--;
+                    localStorage.setItem("notifs", notifs);
+                    setNotifications(notifs);
                     if(notifications<=0){
                       setNotifications(0);
                     }
@@ -112,7 +115,9 @@ function Header() {
                   onClick={(e) => {
                     e.preventDefault();
                     window.location.href = "/admin/AssignedAuditsList";
-                    setNotifications(notifications-1);
+                    notifs--;
+                    localStorage.setItem("notifs", notifs);
+                    setNotifications(notifs);
                     if(notifications<=0){
                       setNotifications(0);
                     }
@@ -125,7 +130,9 @@ function Header() {
                   onClick={(e) => {
                     e.preventDefault();
                     window.location.href = "/admin/AssignedAuditsList";
-                    setNotifications(notifications-1);
+                    notifs--;
+                    localStorage.setItem("notifs", notifs);
+                    setNotifications(notifs);
                     if(notifications<=0){
                       setNotifications(0);
                     }
@@ -138,7 +145,9 @@ function Header() {
                   onClick={(e) => {
                     e.preventDefault();
                     window.location.href = "/admin/AssignedAuditsList";
-                    setNotifications(notifications-1);
+                    notifs--;
+                    localStorage.setItem("notifs", notifs);
+                    setNotifications(notifs);
                     if(notifications<=0){
                       setNotifications(0);
                     }
