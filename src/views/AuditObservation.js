@@ -12,31 +12,26 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import Dropdown from "react-bootstrap/Dropdown";
-
-function AssignAudit() {
+function AuditObservation() {
   return (
     <>
-      <Container
-        fluid
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
+      <Container fluid
+      style={{
+        display: 'flex',
+        width: '100%'
+      }}>
         <Row
-          style={{
-            width: "100%",
-            justifyContent: "center",
-          }}
-        >
+        style={{
+          width: '100%',
+          justifyContent: 'center'
+        }}>
           <Col md="8">
             <Card
-              style={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "center",
-              }}
+            style={{
+              display: "flex",
+              width:'100%',
+              justifyContent:'center'
+            }}
             >
               <Card.Header>
                 <Card.Title as="h4">Assign Audit</Card.Title>
@@ -61,26 +56,9 @@ function AssignAudit() {
                         <Form.Control
                           defaultValue="dept"
                           placeholder="Department"
-                          type="dropdown"
+                          type="text"
                         ></Form.Control>
                       </Form.Group>
-                      {/* <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                          Dropdown Button
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">
-                            Action
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">
-                            Another action
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            Something else
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown> */}
                     </Col>
                   </Row>
                   <h4>Auditor</h4>
@@ -108,7 +86,7 @@ function AssignAudit() {
                   </Row>
                   <h4>Audit</h4>
                   <Row>
-                    <Col className="pr-1" md="6">
+                    <Col  className="pr-1" md="6">
                       {/* <ReactDatePicker></ReactDatePicker> */}
                       <Form.Group>
                         <label>Start Date</label>
@@ -119,7 +97,7 @@ function AssignAudit() {
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="pr-1" md="6">
+                    <Col  className="pr-1" md="6">
                       {/* <ReactDatePicker></ReactDatePicker> */}
                       <Form.Group>
                         <label>End Date</label>
@@ -131,7 +109,8 @@ function AssignAudit() {
                       </Form.Group>
                     </Col>
                   </Row>
-
+                  
+                  
                   <Button
                     className="btn-fill pull-right"
                     type="submit"
@@ -150,4 +129,4 @@ function AssignAudit() {
   );
 }
 
-export default AssignAudit;
+export default AuditObservation;

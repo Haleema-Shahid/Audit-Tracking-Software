@@ -16,7 +16,6 @@
 
 */
 import Dashboard from "views/Dashboard.js";
-import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import Icons from "views/Icons.js";
 import Maps from "views/Maps.js";
@@ -24,6 +23,7 @@ import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
 import AssignAudit from "views/AssignAudit";
 import Login from "views/Login";
+import AssignedAuditsList from "views/AssignedAuditsList";
 
 const dashboardRoutes = [
   {
@@ -56,10 +56,10 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/table",
-    name: "Table List",
+    path: "/AssignedAuditsList",
+    name: "Assigned Audits",
     icon: "nc-icon nc-notes",
-    component: TableList,
+    component: AssignedAuditsList,
     layout: "/admin"
   },
   {

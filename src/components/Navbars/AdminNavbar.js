@@ -15,13 +15,14 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
-
 import routes from "routes.js";
 
 function Header() {
+  //const navigate = useNavigate();
+  const [notifications, setNotifications]=useState(4);
   const location = useLocation();
   const mobileSidebarToggle = (e) => {
     e.preventDefault();
@@ -76,7 +77,7 @@ function Header() {
                 onClick={(e) => e.preventDefault()}
                 className="m-0"
               >
-                <i className="nc-icon nc-palette"></i>
+                {/* <i className="nc-icon nc-palette"></i> */}
                 <span className="d-lg-none ml-1">Dashboard</span>
               </Nav.Link>
             </Nav.Item>
@@ -88,44 +89,66 @@ function Header() {
                 variant="default"
                 className="m-0"
               >
-                <i className="nc-icon nc-planet"></i>
-                <span className="notification">5</span>
+                <i className="nc-icon nc-bell-55"></i>
+                <span className="notification">{notifications}</span>
                 <span className="d-lg-none ml-1">Notification</span>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  href="localhost:3001/admin/AssignedAuditsList"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/admin/AssignedAuditsList"
+                    setNotifications(notifications-1);
+                    if(notifications<=0){
+                      setNotifications(0);
+                    }
+                  }}
                 >
-                  Notification 1
+                  you have been assigned an audit!
                 </Dropdown.Item>
                 <Dropdown.Item
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  href="localhost:3001/admin/AssignedAuditsList"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/admin/AssignedAuditsList";
+                    setNotifications(notifications-1);
+                    if(notifications<=0){
+                      setNotifications(0);
+                    }
+                  }}
                 >
-                  Notification 2
+                  you have been assigned an audit!
                 </Dropdown.Item>
                 <Dropdown.Item
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  href="localhost:3001/admin/AssignedAuditsList"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/admin/AssignedAuditsList";
+                    setNotifications(notifications-1);
+                    if(notifications<=0){
+                      setNotifications(0);
+                    }
+                  }}
                 >
-                  Notification 3
+                  you have been assigned an audit!
                 </Dropdown.Item>
                 <Dropdown.Item
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  href="localhost:3001/admin/AssignedAuditsList"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/admin/AssignedAuditsList";
+                    setNotifications(notifications-1);
+                    if(notifications<=0){
+                      setNotifications(0);
+                    }
+                  }}
                 >
-                  Notification 4
-                </Dropdown.Item>
-                <Dropdown.Item
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Another notification
+                  you have been assigned an audit!
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Nav.Item>
+            {/* <Nav.Item>
               <Nav.Link
                 className="m-0"
                 href="#pablo"
@@ -134,7 +157,7 @@ function Header() {
                 <i className="nc-icon nc-zoom-split"></i>
                 <span className="d-lg-block"> Search</span>
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
           </Nav>
           <Nav className="ml-auto" navbar>
             <Nav.Item>

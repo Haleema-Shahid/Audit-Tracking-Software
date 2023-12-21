@@ -130,22 +130,22 @@ function Dashboard() {
           <Col md="8">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Users Behavior</Card.Title>
-                <p className="card-category">24 Hours performance</p>
+                <Card.Title as="h4">Departments Performance</Card.Title>
+                <p className="card-category">Annual performance</p>
               </Card.Header>
               <Card.Body>
                 <div className="ct-chart" id="chartHours">
                   <ChartistGraph
                     data={{
                       labels: [
-                        "9:00AM",
-                        "12:00AM",
-                        "3:00PM",
-                        "6:00PM",
-                        "9:00PM",
-                        "12:00PM",
-                        "3:00AM",
-                        "6:00AM",
+                        "01-01-23",
+                        "01-02-23",
+                        "01-03-23",
+                        "01-04-23",
+                        "01-05-23",
+                        "01-06-23",
+                        "01-07-23",
+                        "01-08-23",
                       ],
                       series: [
                         [287, 385, 490, 492, 554, 586, 698, 695],
@@ -188,9 +188,9 @@ function Dashboard() {
               <Card.Footer>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Open <i className="fas fa-circle text-danger"></i>
-                  Click <i className="fas fa-circle text-warning"></i>
-                  Click Second Time
+                  Accounts <i className="fas fa-circle text-danger"></i>
+                  Human Resource <i className="fas fa-circle text-warning"></i>
+                  IT
                 </div>
                 <hr></hr>
                 <div className="stats">
@@ -203,8 +203,8 @@ function Dashboard() {
           <Col md="4">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Email Statistics</Card.Title>
-                <p className="card-category">Last Campaign Performance</p>
+                <Card.Title as="h4">Audits Criticality</Card.Title>
+                <p className="card-category">December Performance</p>
               </Card.Header>
               <Card.Body>
                 <div
@@ -213,22 +213,23 @@ function Dashboard() {
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["40%", "20%", "40%"],
-                      series: [40, 20, 40],
+                      labels: ["25%", "25%", "25%", "25%"],
+                      series: [20, 40, 30, 10],
                     }}
                     type="Pie"
                   />
                 </div>
                 <div className="legend">
-                  <i className="fas fa-circle text-info"></i>
-                  Open <i className="fas fa-circle text-danger"></i>
-                  Bounce <i className="fas fa-circle text-warning"></i>
-                  Unsubscribe
+                <i className="fas fa-circle text-danger"></i>
+                  High <i className="fas fa-circle" style={{color:'orange'}}></i>
+                  Medium <i className="fas fa-circle" style={{color:'#9368E9'}}></i>
+                  Low <i className="fas fa-circle" style={{color:'#1DC7EA'}}></i>
+                  Advisory
                 </div>
                 <hr></hr>
                 <div className="stats">
                   <i className="far fa-clock"></i>
-                  Campaign sent 2 days ago
+                  Updated now
                 </div>
               </Card.Body>
             </Card>
