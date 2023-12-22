@@ -4,6 +4,7 @@
   "dependencies": {
     "@date-io/date-fns": "^2.17.0",
     "@fortawesome/fontawesome-free": "5.15.2",
+    "axios": "^1.6.2",
     "bootstrap": "4.6.0",
     "chartist": "0.11.4",
     "gulp": "^4.0.2",

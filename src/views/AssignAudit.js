@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../css/AssignAudit.css"; // Adjust the path accordingly
+import { getAllDepartments } from "service/DepartmentsAPI";
+import { getAllAuditors } from "service/UserAPI";
 
 function AssignAudit() {
   const [selectedDepartment, setSelectedDepartment] = useState(null);
@@ -12,19 +14,44 @@ function AssignAudit() {
   const [endDate, setEndDate] = useState(null);
   const [companyName, setCompanyName] = useState("Al-Meezan Group"); // Default company name
 
-  const departmentOptions = [
-    { value: 'IT', label: 'IT Department' },
-    { value: 'HR', label: 'HR Department' },
-    { value: 'FINANCE', label: 'Finance Department' },
-    { value: 'MARKETING', label: 'Marketing Department' },
-  ];
+  const [departmentOptions,setDepartmentOptions] = useState([]);
 
-  const auditorOptions = [
-    { value: 1, label: 'Mishgha Zahid' },
-    { value: 2, label: 'Haleema Shahid' },
-    { value: 3, label: 'Muhammad Ismaeel' },
-    { value: 4, label: 'Adil Mir' },
-  ];
+  const [auditorOptions,setAuditorOptions] = useState([]);
+
+  const getDepartments = async () => {
+    try {
+      const response = await getAllDepartments();
+      const departmentData = response.data.map((department) => ({
+        value: department.id,
+        label: department.name
+      }))
+
+      setDepartmentOptions(departmentData);
+    }
+    catch(error)
+    {
+      alert("Error in fetching departments");
+    }
+  }
+
+  const getAuditors = async () => {
+    try{
+      const response = await getAllAuditors();
+      const auditorData = response.data.map((auditor) => ({
+        value: auditor.id,
+        label: auditor.name
+      }))
+
+      setAuditorOptions(auditorData);
+    }
+    catch(error)
+    {
+      alert("Error in fetching auditors");
+    }
+  }
+
+
+
 
   const handleDepartmentChange = (e) => {
     const selectedOption = departmentOptions.find(
@@ -54,6 +81,11 @@ function AssignAudit() {
       endDate,
     });
   };
+
+  useEffect(() => {
+    getDepartments();
+    getAuditors();
+  },[])
 
   return (
     <>
