@@ -31,7 +31,7 @@ function FixedPlugin({
   color,
   setColor,
   image,
-  setImage
+  setImage,
 }) {
   // constructor(props) {
   //   super(props);
@@ -104,7 +104,7 @@ function FixedPlugin({
             </div>
             <div className="clearfix"></div>
           </li>
-          <li className="header-title">Sidebar Images</li>
+          {/* <li className="header-title">Sidebar Images</li>
           <li className={image === sideBarImage1 ? "active" : ""}>
             <a
               className="img-holder switch-trigger d-block"
@@ -128,8 +128,8 @@ function FixedPlugin({
             >
               <img alt="..." src={sideBarImage2}></img>
             </a>
-          </li>
-          <li className={image === sideBarImage3 ? "active" : ""}>
+          </li> */}
+          {/* <li className={image === sideBarImage3 ? "active" : ""}>
             <a
               className="img-holder switch-trigger d-block"
               href="#pablo"
@@ -140,8 +140,8 @@ function FixedPlugin({
             >
               <img alt="..." src={sideBarImage3}></img>
             </a>
-          </li>
-          <li className={image === sideBarImage4 ? "active" : ""}>
+          </li> */}
+          {/* <li className={image === sideBarImage4 ? "active" : ""}>
             <a
               className="img-holder switch-trigger d-block"
               href="#pablo"
@@ -152,8 +152,8 @@ function FixedPlugin({
             >
               <img alt="..." src={sideBarImage4}></img>
             </a>
-          </li>
-          <li className="button-container">
+          </li> */}
+          {/* <li className="button-container">
             <div>
               <Button
                 block
@@ -166,8 +166,8 @@ function FixedPlugin({
                 Download, it's free!
               </Button>
             </div>
-          </li>
-          <li className="button-container">
+          </li> */}
+          {/* <li className="button-container">
             <div>
               <Button
                 block
@@ -197,8 +197,8 @@ function FixedPlugin({
                 Get The PRO Version!
               </Button>
             </div>
-          </li>
-          <li className="header-title" id="sharrreTitle">
+          </li> */}
+          {/* <li className="header-title" id="sharrreTitle">
             Thank you for sharing!
           </li>
           <li className="button-container mb-4">
@@ -216,7 +216,7 @@ function FixedPlugin({
             >
               <i className="fab fa-facebook-square"></i>· 426
             </Button>
-          </li>
+          </li> */}
         </Dropdown.Menu>
       </Dropdown>
     </div>

@@ -22,7 +22,7 @@ function Dashboard() {
       <Container fluid>
         <Row>
           <Col lg="3" sm="6">
-            <Card className="card-stats">
+            {/* <Card className="card-stats">
               <Card.Body>
                 <Row>
                   <Col xs="5">
@@ -45,9 +45,9 @@ function Dashboard() {
                   Update Now
                 </div>
               </Card.Footer>
-            </Card>
+            </Card> */}
           </Col>
-          <Col lg="3" sm="6">
+          {/* <Col lg="3" sm="6">
             <Card className="card-stats">
               <Card.Body>
                 <Row>
@@ -124,7 +124,7 @@ function Dashboard() {
                 </div>
               </Card.Footer>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
         <Row>
           <Col md="8">
@@ -220,10 +220,13 @@ function Dashboard() {
                   />
                 </div>
                 <div className="legend">
-                <i className="fas fa-circle text-danger"></i>
-                  High <i className="fas fa-circle" style={{color:'orange'}}></i>
-                  Medium <i className="fas fa-circle" style={{color:'#9368E9'}}></i>
-                  Low <i className="fas fa-circle" style={{color:'#1DC7EA'}}></i>
+                  <i className="fas fa-circle text-danger"></i>
+                  High{" "}
+                  <i className="fas fa-circle" style={{ color: "orange" }}></i>
+                  Medium{" "}
+                  <i className="fas fa-circle" style={{ color: "#9368E9" }}></i>
+                  Low{" "}
+                  <i className="fas fa-circle" style={{ color: "#1DC7EA" }}></i>
                   Advisory
                 </div>
                 <hr></hr>
@@ -262,31 +265,11 @@ function Dashboard() {
                       ],
                       series: [
                         [
-                          542,
-                          443,
-                          320,
-                          780,
-                          553,
-                          453,
-                          326,
-                          434,
-                          568,
-                          610,
-                          756,
+                          542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756,
                           895,
                         ],
                         [
-                          412,
-                          243,
-                          280,
-                          580,
-                          453,
-                          353,
-                          300,
-                          364,
-                          368,
-                          410,
-                          636,
+                          412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636,
                           695,
                         ],
                       ],
@@ -330,7 +313,7 @@ function Dashboard() {
             </Card>
           </Col>
           <Col md="6">
-            <Card className="card-tasks">
+            {/* <Card className="card-tasks">
               <Card.Header>
                 <Card.Title as="h4">Tasks</Card.Title>
                 <p className="card-category">Backend development</p>
@@ -630,7 +613,7 @@ function Dashboard() {
                   Updated 3 minutes ago
                 </div>
               </Card.Footer>
-            </Card>
+            </Card> */}
           </Col>
         </Row>
       </Container>

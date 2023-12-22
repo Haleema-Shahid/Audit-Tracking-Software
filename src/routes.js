@@ -16,24 +16,20 @@
 
 */
 import Dashboard from "views/Dashboard.js";
-import Typography from "views/Typography.js";
-import Icons from "views/Icons.js";
-import Notifications from "views/Notifications.js";
-import Upgrade from "views/Upgrade.js";
 import AssignAudit from "views/AssignAudit";
 import Login from "views/Login";
 import AssignedAuditsList from "views/AssignedAuditsList";
 import AuditForm from "views/AuditForm";
 
 const dashboardRoutes = [
-  {
-    upgrade: true,
-    path: "/upgrade",
-    name: "Upgrade to PRO",
-    icon: "nc-icon nc-alien-33",
-    component: Upgrade,
-    layout: "/admin",
-  },
+  // {
+  //   upgrade: true,
+  //   path: "/upgrade",
+  //   name: "Upgrade to PRO",
+  //   icon: "nc-icon nc-alien-33",
+  //   component: Upgrade,
+  //   layout: "/admin",
+  // },
   {
     path: "/dashboard",
     name: "Dashboard",

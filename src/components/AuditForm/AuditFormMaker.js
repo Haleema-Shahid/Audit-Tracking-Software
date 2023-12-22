@@ -1,21 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // react-bootstrap components
 import { Card, Table, Container, Row, Col } from "react-bootstrap";
 import { Input } from "reactstrap";
 
-function AuditForm({ currentForm, formTitle, onInputChange }) {
+function Audit({ currentForm, onInputChange, formData }) {
   const [selectedValue, setSelectedValue] = useState("");
+  const [formInput, setFormInput] = useState({
+    formIndex: currentForm,
+    formTitle: "",
+    findings: "",
+    risk: "",
+    controlsInPlace: "",
+    actionsRequired: "",
+    deficiencies: "",
+    controlEffectiveness: "",
+    findingRating: "",
+    recommendation: "",
+    responsibleDepartment: "",
+    timeline: "",
+    managementComments: "",
+    postManagementComments: "",
+  });
+
+  useEffect(() => {
+    if (formData) {
+      setSelectedValue(formData.controlsInPlace);
+    } else {
+      onInputChange("controlsInPlace", "yes");
+    }
+  }, []);
 
   const dropDown = (e) => {
     const { value } = e.target;
     setSelectedValue(value);
+    setFormInput({ ...formInput, controlsInPlace: value });
     onInputChange("controlsInPlace", value);
   };
-
   const handleFieldChange = (e) => {
     const { name, value } = e.target;
-    onInputChange(name, value);
+    setFormInput({ ...formInput, [name]: value });
+    onInputChange(name, value, currentForm - 1);
   };
 
   return (
@@ -36,12 +61,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           color: "black",
                         }}
                       >
-                        {currentForm}
+                        {formData ? formData.formIndex : formInput.formIndex}
                       </th>
                       <th
                         colSpan={8}
                         className="font-weight-bold border"
-                        onChange={(e) => handleFieldChange(e)}
                         style={{
                           fontSize: "18px",
                           fontWeight: "bold",
@@ -74,6 +98,9 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="findings"
                           style={{ width: "100%", border: "none" }}
                           onChange={(e) => handleFieldChange(e)}
+                          value={
+                            formData ? formData.findings : formInput.findings
+                          }
                         />
                       </td>
                     </tr>
@@ -87,6 +114,7 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="risk"
                           style={{ width: "100%", border: "none" }}
                           onChange={(e) => handleFieldChange(e)}
+                          value={formData ? formData.risk : formInput.risk}
                         />
                       </td>
                     </tr>
@@ -147,7 +175,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                         <Input
                           onChange={(e) => handleFieldChange(e)}
                           name="actionsRequired"
-                          actionsRequired
+                          value={
+                            formData
+                              ? formData.actionsRequired
+                              : formInput.actionsRequired
+                          }
                           style={{ border: "none" }}
                         />
                       </td>
@@ -156,6 +188,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="deficiencies"
                           onChange={(e) => handleFieldChange(e)}
                           style={{ border: "none" }}
+                          value={
+                            formData
+                              ? formData.deficiencies
+                              : formInput.deficiencies
+                          }
                         />
                       </td>
                       <td className="border">
@@ -163,6 +200,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="controlEffectiveness"
                           onChange={(e) => handleFieldChange(e)}
                           style={{ border: "none" }}
+                          value={
+                            formData
+                              ? formData.controlEffectiveness
+                              : formInput.controlEffectiveness
+                          }
                         />
                       </td>
                       <td className="border">
@@ -170,6 +212,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="findingRating"
                           onChange={(e) => handleFieldChange(e)}
                           style={{ border: "none" }}
+                          value={
+                            formData
+                              ? formData.findingRating
+                              : formInput.findingRating
+                          }
                         />
                       </td>
                       <td className="border">
@@ -177,6 +224,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="recommendation"
                           onChange={(e) => handleFieldChange(e)}
                           style={{ border: "none" }}
+                          value={
+                            formData
+                              ? formData.recommendation
+                              : formInput.recommendation
+                          }
                         />
                       </td>
                       <td className="border">
@@ -184,6 +236,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="responsibleDepartment"
                           onChange={(e) => handleFieldChange(e)}
                           style={{ border: "none" }}
+                          value={
+                            formData
+                              ? formData.responsibleDepartment
+                              : formInput.responsibleDepartment
+                          }
                         />
                       </td>
 
@@ -192,6 +249,9 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="timeline"
                           onChange={(e) => handleFieldChange(e)}
                           style={{ border: "none" }}
+                          value={
+                            formData ? formData.timeline : formInput.timeline
+                          }
                         />
                       </td>
                     </tr>
@@ -204,6 +264,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="managementComments"
                           style={{ width: "100%" }}
                           onChange={(e) => handleFieldChange(e)}
+                          value={
+                            formData
+                              ? formData.managementComments
+                              : formInput.managementComments
+                          }
                         />
                       </td>
                     </tr>
@@ -216,6 +281,11 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
                           name="postManagementComments"
                           style={{ width: "100%" }}
                           onChange={(e) => handleFieldChange(e)}
+                          value={
+                            formData
+                              ? formData.postManagementComments
+                              : formInput.postManagementComments
+                          }
                         />
                       </td>
                     </tr>
@@ -230,4 +300,4 @@ function AuditForm({ currentForm, formTitle, onInputChange }) {
   );
 }
 
-export default AuditForm;
+export default Audit;
