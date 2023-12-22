@@ -78,7 +78,7 @@ function AssignAudit() {
       auditorId,
       auditorName,
       startDate,
-      endDate,
+      endDate
     });
   };
 
