@@ -10,13 +10,25 @@ function AssignAudit() {
   const [selectedAuditor, setSelectedAuditor] = useState(null);
   const [auditorId, setAuditorId] = useState();
   const [auditorName, setAuditorName] = useState();
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
   const [companyName, setCompanyName] = useState("Al-Meezan Group"); // Default company name
-
-  const [departmentOptions,setDepartmentOptions] = useState([]);
-
-  const [auditorOptions,setAuditorOptions] = useState([]);
+  const [departmentOptions, setDepartmentOptions] = useState([]);
+  const [auditorOptions, setAuditorOptions] = useState([]);
+  const [auditData, setAuditData] = useState({
+    startDate: "",
+    endDate: "",
+    status: "",
+    assignedBy: {
+      id: 3
+    },
+    assignedTo: {
+      id: 0
+    },
+    department: {
+      id: 0
+    }
+  })
 
   const getDepartments = async () => {
     try {
@@ -28,14 +40,13 @@ function AssignAudit() {
 
       setDepartmentOptions(departmentData);
     }
-    catch(error)
-    {
+    catch (error) {
       alert("Error in fetching departments");
     }
   }
 
   const getAuditors = async () => {
-    try{
+    try {
       const response = await getAllAuditors();
       const auditorData = response.data.map((auditor) => ({
         value: auditor.id,
@@ -44,18 +55,15 @@ function AssignAudit() {
 
       setAuditorOptions(auditorData);
     }
-    catch(error)
-    {
+    catch (error) {
       alert("Error in fetching auditors");
     }
   }
 
 
-
-
   const handleDepartmentChange = (e) => {
     const selectedOption = departmentOptions.find(
-      (option) => option.value === e.target.value
+      (option) => option.value === parseInt(e.target.value, 10)
     );
     setSelectedDepartment(selectedOption);
   };
@@ -71,21 +79,50 @@ function AssignAudit() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic for handling form submission here
-    console.log("Form submitted:", {
-      selectedDepartment,
-      selectedAuditor,
-      auditorId,
-      auditorName,
-      startDate,
-      endDate
-    });
+
+    if (end <= start) {
+      alert("End date should be after the start date.");
+      return; // Do not proceed with the form submission
+    }
+
+    // Format dates as "yyyy-MM-dd"
+    const formattedStartDate = start.toLocaleDateString('en-CA');
+    const formattedEndDate = end.toLocaleDateString('en-CA');
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const updatedAuditData = {
+      ...auditData,
+      startDate: formattedStartDate,
+      endDate: formattedEndDate,
+      assignedTo: {
+        id: auditorId
+      },
+      department: {
+        id: selectedDepartment.value
+      }
+    };
+
+    if (today < start) {
+      updatedAuditData.status = "Processing";
+    } else if (today > end) {
+      updatedAuditData.status = "Completed";
+    } else {
+      updatedAuditData.status = "In Progress";
+    }
+
+    setAuditData(updatedAuditData);
+
+    console.log("Updated Audit Data: ", updatedAuditData);
+    console.log("Audit data: ", auditData);
+
   };
 
   useEffect(() => {
     getDepartments();
     getAuditors();
-  },[])
+  }, [])
 
   return (
     <>
@@ -138,7 +175,7 @@ function AssignAudit() {
               ))}
             </select>
           </div>
-          </div>
+        </div>
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Auditor ID (disabled):</label>
@@ -155,19 +192,19 @@ function AssignAudit() {
           <div className="form-group col-md-6">
             <label>Start Date:</label>
             <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              selected={start}
+              onChange={(date) => setStart(date)}
               className="form-control date-picker"
-              dateFormat="MM/dd/yyyy"
+              dateFormat="yyyy/MM/dd"
             />
           </div>
           <div className="form-group col-md-6">
             <label>End Date:</label>
             <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
+              selected={end}
+              onChange={(date) => setEnd(date)}
               className="form-control date-picker"
-              dateFormat="MM/dd/yyyy"
+              dateFormat="yyyy/MM/dd"
             />
           </div>
         </div>
@@ -177,7 +214,7 @@ function AssignAudit() {
             Assign
           </button>
         </div>
-      </form> 
+      </form>
     </>
   );
 }
