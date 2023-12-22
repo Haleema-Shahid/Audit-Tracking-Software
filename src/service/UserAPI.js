@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://16.171.64.102:8080";
 
 export const getAllAuditors = async () => {
   try {
@@ -9,4 +9,4 @@ export const getAllAuditors = async () => {
   } catch (error) {
     throw error;
   }
-}
+};

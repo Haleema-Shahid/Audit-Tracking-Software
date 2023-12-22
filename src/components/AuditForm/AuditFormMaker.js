@@ -4,20 +4,25 @@ import React, { useEffect, useState } from "react";
 import { Card, Table, Container, Row, Col } from "react-bootstrap";
 import { Input } from "reactstrap";
 
-function Audit({ currentForm, onInputChange, formData }) {
+function Audit({
+  currentForm,
+  onInputChange,
+  formData,
+  responsibleDepartment,
+}) {
   const [selectedValue, setSelectedValue] = useState("");
   const [formInput, setFormInput] = useState({
     formIndex: currentForm,
     formTitle: "",
     findings: "",
     risk: "",
-    controlsInPlace: "",
+    controlsInPlace: true,
     actionsRequired: "",
     deficiencies: "",
     controlEffectiveness: "",
     findingRating: "",
     recommendation: "",
-    responsibleDepartment: "",
+    responsibleDepartment: responsibleDepartment,
     timeline: "",
     managementComments: "",
     postManagementComments: "",
@@ -27,15 +32,19 @@ function Audit({ currentForm, onInputChange, formData }) {
     if (formData) {
       setSelectedValue(formData.controlsInPlace);
     } else {
-      onInputChange("controlsInPlace", "yes");
+      onInputChange("controlsInPlace", true);
     }
   }, []);
 
   const dropDown = (e) => {
     const { value } = e.target;
-    setSelectedValue(value);
-    setFormInput({ ...formInput, controlsInPlace: value });
-    onInputChange("controlsInPlace", value);
+    let val = true;
+    if (value == "no") {
+      val = false;
+    }
+    setSelectedValue(val);
+    setFormInput({ ...formInput, controlsInPlace: val });
+    onInputChange("controlsInPlace", val);
   };
   const handleFieldChange = (e) => {
     const { name, value } = e.target;

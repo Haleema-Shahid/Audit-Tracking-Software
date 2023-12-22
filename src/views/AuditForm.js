@@ -5,8 +5,10 @@ import { Button } from "react-bootstrap";
 import Audit from "components/AuditForm/AuditFormMaker";
 import { useUser } from "context/UserContext";
 import { saveFormData } from "service/FindingsAPI";
+import { useParams } from "react-router-dom";
 
 function AuditForm() {
+  const { auditId, deptName } = useParams();
   const navigate = useHistory();
   const [currentIndex, setCurrentIndex] = useState(1);
   const [currentForm, setCurrentForm] = useState(1);

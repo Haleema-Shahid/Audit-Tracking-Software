@@ -61,6 +61,13 @@ function AssignedAuditsList() {
     }
   }, []);
 
+  const navigateToAuditForm = (audit) => {
+    console.log("AUdit id ", audit.department.name, "  ", audit.id);
+    history.push(
+      `/admin/audit-form?deptName=${audit.department.name}&auditId=${audit.id}`
+    );
+  };
+
   if (isLoggedIn) {
     if (user.role == "AUDITOR") {
       return (
@@ -85,6 +92,7 @@ function AssignedAuditsList() {
                           <th className="border-0">Start Date</th>
                           <th className="border-0">End Date</th>
                           <th className="border-0">Status</th>
+                          <th className="border-0">Fill Audit Form</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -97,6 +105,14 @@ function AssignedAuditsList() {
                             <td>{audit.endDate}</td>
                             <td>{audit.status}</td>
                             {/* ... other table data based on your audit DTO */}
+                            <td>
+                              <Button
+                                variant="primary"
+                                onClick={() => navigateToAuditForm(audit)}
+                              >
+                                Go To Form
+                              </Button>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
