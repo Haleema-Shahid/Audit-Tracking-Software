@@ -15,14 +15,19 @@ import {
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
+import { useUser } from "context/UserContext";
+import { useHistory } from "react-router-dom";
 
 function Dashboard() {
-  return (
-    <>
-      <Container fluid>
-        <Row>
-          <Col lg="3" sm="6">
-            {/* <Card className="card-stats">
+  const history = useHistory();
+  const { isLoggedIn } = useUser();
+  if (isLoggedIn) {
+    return (
+      <>
+        <Container fluid>
+          <Row>
+            <Col lg="3" sm="6">
+              {/* <Card className="card-stats">
               <Card.Body>
                 <Row>
                   <Col xs="5">
@@ -46,8 +51,8 @@ function Dashboard() {
                 </div>
               </Card.Footer>
             </Card> */}
-          </Col>
-          {/* <Col lg="3" sm="6">
+            </Col>
+            {/* <Col lg="3" sm="6">
             <Card className="card-stats">
               <Card.Body>
                 <Row>
@@ -125,195 +130,205 @@ function Dashboard() {
               </Card.Footer>
             </Card>
           </Col> */}
-        </Row>
-        <Row>
-          <Col md="8">
-            <Card>
-              <Card.Header>
-                <Card.Title as="h4">Departments Performance</Card.Title>
-                <p className="card-category">Annual performance</p>
-              </Card.Header>
-              <Card.Body>
-                <div className="ct-chart" id="chartHours">
-                  <ChartistGraph
-                    data={{
-                      labels: [
-                        "01-01-23",
-                        "01-02-23",
-                        "01-03-23",
-                        "01-04-23",
-                        "01-05-23",
-                        "01-06-23",
-                        "01-07-23",
-                        "01-08-23",
-                      ],
-                      series: [
-                        [287, 385, 490, 492, 554, 586, 698, 695],
-                        [67, 152, 143, 240, 287, 335, 435, 437],
-                        [23, 113, 67, 108, 190, 239, 307, 308],
-                      ],
-                    }}
-                    type="Line"
-                    options={{
-                      low: 0,
-                      high: 800,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
+          </Row>
+          <Row>
+            <Col md="8">
+              <Card>
+                <Card.Header>
+                  <Card.Title as="h4">Departments Performance</Card.Title>
+                  <p className="card-category">Annual performance</p>
+                </Card.Header>
+                <Card.Body>
+                  <div className="ct-chart" id="chartHours">
+                    <ChartistGraph
+                      data={{
+                        labels: [
+                          "01-01-23",
+                          "01-02-23",
+                          "01-03-23",
+                          "01-04-23",
+                          "01-05-23",
+                          "01-06-23",
+                          "01-07-23",
+                          "01-08-23",
+                        ],
+                        series: [
+                          [287, 385, 490, 492, 554, 586, 698, 695],
+                          [67, 152, 143, 240, 287, 335, 435, 437],
+                          [23, 113, 67, 108, 190, 239, 307, 308],
+                        ],
+                      }}
+                      type="Line"
+                      options={{
+                        low: 0,
+                        high: 800,
+                        showArea: false,
+                        height: "245px",
+                        axisX: {
+                          showGrid: false,
+                        },
+                        lineSmooth: true,
+                        showLine: true,
+                        showPoint: true,
+                        fullWidth: true,
+                        chartPadding: {
+                          right: 50,
+                        },
+                      }}
+                      responsiveOptions={[
+                        [
+                          "screen and (max-width: 640px)",
+                          {
+                            axisX: {
+                              labelInterpolationFnc: function (value) {
+                                return value[0];
+                              },
                             },
                           },
+                        ],
+                      ]}
+                    />
+                  </div>
+                </Card.Body>
+                <Card.Footer>
+                  <div className="legend">
+                    <i className="fas fa-circle text-info"></i>
+                    Accounts <i className="fas fa-circle text-danger"></i>
+                    Human Resource{" "}
+                    <i className="fas fa-circle text-warning"></i>
+                    IT
+                  </div>
+                  <hr></hr>
+                  <div className="stats">
+                    <i className="fas fa-history"></i>
+                    Updated 3 minutes ago
+                  </div>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col md="4">
+              <Card>
+                <Card.Header>
+                  <Card.Title as="h4">Audits Criticality</Card.Title>
+                  <p className="card-category">December Performance</p>
+                </Card.Header>
+                <Card.Body>
+                  <div
+                    className="ct-chart ct-perfect-fourth"
+                    id="chartPreferences"
+                  >
+                    <ChartistGraph
+                      data={{
+                        labels: ["25%", "25%", "25%", "25%"],
+                        series: [20, 40, 30, 10],
+                      }}
+                      type="Pie"
+                    />
+                  </div>
+                  <div className="legend">
+                    <i className="fas fa-circle text-danger"></i>
+                    High{" "}
+                    <i
+                      className="fas fa-circle"
+                      style={{ color: "orange" }}
+                    ></i>
+                    Medium{" "}
+                    <i
+                      className="fas fa-circle"
+                      style={{ color: "#9368E9" }}
+                    ></i>
+                    Low{" "}
+                    <i
+                      className="fas fa-circle"
+                      style={{ color: "#1DC7EA" }}
+                    ></i>
+                    Advisory
+                  </div>
+                  <hr></hr>
+                  <div className="stats">
+                    <i className="far fa-clock"></i>
+                    Updated now
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col md="6">
+              <Card>
+                <Card.Header>
+                  <Card.Title as="h4">2017 Sales</Card.Title>
+                  <p className="card-category">All products including Taxes</p>
+                </Card.Header>
+                <Card.Body>
+                  <div className="ct-chart" id="chartActivity">
+                    <ChartistGraph
+                      data={{
+                        labels: [
+                          "Jan",
+                          "Feb",
+                          "Mar",
+                          "Apr",
+                          "Mai",
+                          "Jun",
+                          "Jul",
+                          "Aug",
+                          "Sep",
+                          "Oct",
+                          "Nov",
+                          "Dec",
+                        ],
+                        series: [
+                          [
+                            542, 443, 320, 780, 553, 453, 326, 434, 568, 610,
+                            756, 895,
+                          ],
+                          [
+                            412, 243, 280, 580, 453, 353, 300, 364, 368, 410,
+                            636, 695,
+                          ],
+                        ],
+                      }}
+                      type="Bar"
+                      options={{
+                        seriesBarDistance: 10,
+                        axisX: {
+                          showGrid: false,
                         },
-                      ],
-                    ]}
-                  />
-                </div>
-              </Card.Body>
-              <Card.Footer>
-                <div className="legend">
-                  <i className="fas fa-circle text-info"></i>
-                  Accounts <i className="fas fa-circle text-danger"></i>
-                  Human Resource <i className="fas fa-circle text-warning"></i>
-                  IT
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="fas fa-history"></i>
-                  Updated 3 minutes ago
-                </div>
-              </Card.Footer>
-            </Card>
-          </Col>
-          <Col md="4">
-            <Card>
-              <Card.Header>
-                <Card.Title as="h4">Audits Criticality</Card.Title>
-                <p className="card-category">December Performance</p>
-              </Card.Header>
-              <Card.Body>
-                <div
-                  className="ct-chart ct-perfect-fourth"
-                  id="chartPreferences"
-                >
-                  <ChartistGraph
-                    data={{
-                      labels: ["25%", "25%", "25%", "25%"],
-                      series: [20, 40, 30, 10],
-                    }}
-                    type="Pie"
-                  />
-                </div>
-                <div className="legend">
-                  <i className="fas fa-circle text-danger"></i>
-                  High{" "}
-                  <i className="fas fa-circle" style={{ color: "orange" }}></i>
-                  Medium{" "}
-                  <i className="fas fa-circle" style={{ color: "#9368E9" }}></i>
-                  Low{" "}
-                  <i className="fas fa-circle" style={{ color: "#1DC7EA" }}></i>
-                  Advisory
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="far fa-clock"></i>
-                  Updated now
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col md="6">
-            <Card>
-              <Card.Header>
-                <Card.Title as="h4">2017 Sales</Card.Title>
-                <p className="card-category">All products including Taxes</p>
-              </Card.Header>
-              <Card.Body>
-                <div className="ct-chart" id="chartActivity">
-                  <ChartistGraph
-                    data={{
-                      labels: [
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "Mai",
-                        "Jun",
-                        "Jul",
-                        "Aug",
-                        "Sep",
-                        "Oct",
-                        "Nov",
-                        "Dec",
-                      ],
-                      series: [
+                        height: "245px",
+                      }}
+                      responsiveOptions={[
                         [
-                          542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756,
-                          895,
-                        ],
-                        [
-                          412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636,
-                          695,
-                        ],
-                      ],
-                    }}
-                    type="Bar"
-                    options={{
-                      seriesBarDistance: 10,
-                      axisX: {
-                        showGrid: false,
-                      },
-                      height: "245px",
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          seriesBarDistance: 5,
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
+                          "screen and (max-width: 640px)",
+                          {
+                            seriesBarDistance: 5,
+                            axisX: {
+                              labelInterpolationFnc: function (value) {
+                                return value[0];
+                              },
                             },
                           },
-                        },
-                      ],
-                    ]}
-                  />
-                </div>
-              </Card.Body>
-              <Card.Footer>
-                <div className="legend">
-                  <i className="fas fa-circle text-info"></i>
-                  Tesla Model S <i className="fas fa-circle text-danger"></i>
-                  BMW 5 Series
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="fas fa-check"></i>
-                  Data information certified
-                </div>
-              </Card.Footer>
-            </Card>
-          </Col>
-          <Col md="6">
-            {/* <Card className="card-tasks">
+                        ],
+                      ]}
+                    />
+                  </div>
+                </Card.Body>
+                <Card.Footer>
+                  <div className="legend">
+                    <i className="fas fa-circle text-info"></i>
+                    Tesla Model S <i className="fas fa-circle text-danger"></i>
+                    BMW 5 Series
+                  </div>
+                  <hr></hr>
+                  <div className="stats">
+                    <i className="fas fa-check"></i>
+                    Data information certified
+                  </div>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col md="6">
+              {/* <Card className="card-tasks">
               <Card.Header>
                 <Card.Title as="h4">Tasks</Card.Title>
                 <p className="card-category">Backend development</p>
@@ -614,11 +629,14 @@ function Dashboard() {
                 </div>
               </Card.Footer>
             </Card> */}
-          </Col>
-        </Row>
-      </Container>
-    </>
-  );
+            </Col>
+          </Row>
+        </Container>
+      </>
+    );
+  } else {
+    history.push("/admin/login");
+  }
 }
 
 export default Dashboard;

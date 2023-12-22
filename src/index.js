@@ -27,14 +27,19 @@ import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import AdminLayout from "layouts/Admin.js";
+import { UserProvider } from "context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
-    </Switch>
-  </BrowserRouter>
+  <UserProvider>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        {/* Set the default page to "/login" */}
+        <Redirect exact from="/" to="admin/login" />
+        {/* <Redirect from="/login" to="/admin/dashboard" /> */}
+      </Switch>
+    </BrowserRouter>
+  </UserProvider>
 );

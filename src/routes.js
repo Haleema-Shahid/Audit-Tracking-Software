@@ -36,6 +36,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
     layout: "/admin",
+    roles: ["AUDITOR", "ADMIN"], // Specify the roles that can access this route
   },
   {
     path: "/login",
@@ -43,6 +44,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-chart-pie-35",
     component: Login,
     layout: "/admin",
+    roles: ["AUDITOR", "ADMIN"], // Specify the roles that can access this route
   },
   {
     path: "/assign-audit",
@@ -50,6 +52,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-circle-09",
     component: AssignAudit,
     layout: "/admin",
+    roles: ["ADMIN"], // Specify the roles that can access this route
   },
   {
     path: "/AssignedAuditsList",
@@ -57,6 +60,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-notes",
     component: AssignedAuditsList,
     layout: "/admin",
+    roles: ["AUDITOR"], // Specify the roles that can access this route
   },
   // {
   //   path: "/typography",
@@ -78,6 +82,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-pin-3",
     component: AuditForm,
     layout: "/admin",
+    roles: ["AUDITOR"], // Specify the roles that can access this route
   },
   // {
   //   path: "/notifications",
